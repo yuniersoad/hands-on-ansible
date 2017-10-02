@@ -1,3 +1,5 @@
 ---
 
-username: group_user
+username: "group_user"
+site_owner: "Tito & Linda Inc"
+web_port: 80
