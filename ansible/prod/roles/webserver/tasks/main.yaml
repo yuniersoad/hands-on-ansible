@@ -1,0 +1,21 @@
+---
+
+- name: Install Apache
+  apt: name=apache2 state=present
+
+- name: Start Apache
+  service: name=apache2 state=started enabled=yes
+
+- name: Ensure dir exits
+  file: path={{ doc_root }} state=directory
+
+- name: Copy Site Files
+  template: src=index.j2 dest={{ doc_root }}/index.html
+
+- name: Copy virtual host file
+  template: src=virtual_host.j2 dest={{ apache_conf_root }}/sites-available/000-default.conf
+  notify: Restart Apache
+
+- name: Copy ports file
+  template: src=ports.j2 dest={{ apache_conf_root }}/ports.conf
+  notify: Restart Apache
