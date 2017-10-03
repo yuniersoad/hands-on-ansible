@@ -7,10 +7,6 @@
 
 - hosts: dbservers
   become: yes
-  tasks:
-    - name: Install Mysql
-      apt: name=mysql-server state=present
-
-    - name: Start Mysql
-      service: name=mysql state=started enabled=yes
+  roles:
+    - dbserver
 

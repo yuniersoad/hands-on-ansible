@@ -1,0 +1,8 @@
+---
+
+- name: Install Mysql
+  apt: name=mysql-server state=present
+
+- name: Start Mysql
+  service: name=mysql state=started enabled=yes
+
